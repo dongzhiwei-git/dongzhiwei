@@ -3,6 +3,7 @@ package router
 import (
 	"fmt"
 	"inherited/internal/api"
+	"inherited/internal/pkg"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -11,8 +12,8 @@ import (
 func InitRouter() {
 	var r *gin.Engine
 	r = gin.Default()
-
 	// to solve the cross domain
+	r.Use(pkg.Cors())
 	r.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, nil)
 	})
