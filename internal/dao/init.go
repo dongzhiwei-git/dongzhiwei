@@ -17,6 +17,7 @@ func Init() (err error) {
 	conn := conf.Get().Mysql
 	//DB, err := gorm.Open("mysql", "root:beego@tcp(121.36.216.191:3306)/inherited?charset=utf8mb4&parseTime=True&loc=Local")
 	Orm, err = gorm.Open("mysql", conn.Master.Dsn)
+	// 开启打印SQL语句
 	Orm.AutoMigrate(models.SysUser{})
 	//SysUser := new(services.SysUser)
 	//SysUser.CreateSysUser("root", "234")
